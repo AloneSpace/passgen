@@ -13,10 +13,12 @@ program
   .option('-s, --save', 'save password to passwords.txt')
   .option('-nn, --no-numbers', 'remove numbers')
   .option('-ns, --no-symbols', 'remove symbols')
-  .option('-th, --thai', 'add thai chars')
+  .option('-th, --thai', 'support all thai')
+  .option('-th-a, --thai-alpha', 'add thai alphabet')
+  .option('-th-d, --thai-digit', 'add thai digit')
   .parse()
 
-const { length, save, numbers, symbols, thai } = program.opts()
+const { length, save, numbers, symbols, thai, thai_a, thai_b } = program.opts()
 
 // Get generated password
 const generatedPassword = createPassword(length, numbers, symbols, thai)
