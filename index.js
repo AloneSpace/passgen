@@ -27,7 +27,6 @@ const {
     thaiAlpha,
     thaiDigit,
 } = program.opts();
-console.log(program.opts());
 
 // Get generated password
 const generatedPassword = createPassword(
