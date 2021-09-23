@@ -18,10 +18,10 @@ program
   .option('-th-d, --thai-digit', 'add thai digit')
   .parse()
 
-const { length, save, numbers, symbols, thai, thai_a, thai_b } = program.opts()
+const { length, save, numbers, symbols, thai, thai_a, thai_d } = program.opts()
 
 // Get generated password
-const generatedPassword = createPassword(length, numbers, symbols, thai)
+const generatedPassword = createPassword(length, numbers, symbols, thai, thai_a, thai_d)
 
 // Save to file
 if (save) {
