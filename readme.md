@@ -34,7 +34,9 @@ npm unlink
 | ----- | ----------------- | ------------------------------- |
 | -l    | --length <number> | length of password (default: 8) |
 | -s    | --save            | save password to passwords.txt  |
-| -th   | --thai            | add thai char to password.      |
+| -th   | --thai            | add thai char to password       |
+| -th-a | --thai-alpha      | add only thai alpha to password |
+| -th-d | --thai-digit      | add only thai digit to password |
 | -nn   | --no-numbers      | remove numbers                  |
 | -ns   | --no-symbols      | remove symbols                  |
 | -h    | --help            | display help for command        |
