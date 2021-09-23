@@ -1,36 +1,52 @@
 #!/usr/bin/env node
-const program = require('commander')
-const chalk = require('chalk')
-const clipboardy = require('clipboardy')
-const log = console.log
-const createPassword = require('./utils/createPassword')
-const savePassword = require('./utils/savePassword')
+const program = require("commander");
+const chalk = require("chalk");
+const clipboardy = require("clipboardy");
+const log = console.log;
+const createPassword = require("./utils/createPassword");
+const savePassword = require("./utils/savePassword");
 
-program.version('1.0.1').description('Simple Password Generator')
+program.version("1.0.1").description("Simple Password Generator");
 
 program
-  .option('-l, --length <number>', 'length of password', '8')
-  .option('-s, --save', 'save password to passwords.txt')
-  .option('-nn, --no-numbers', 'remove numbers')
-  .option('-ns, --no-symbols', 'remove symbols')
-  .option('-th, --thai', 'support all thai')
-  .option('-th-a, --thai-alpha', 'add thai alphabet')
-  .option('-th-d, --thai-digit', 'add thai digit')
-  .parse()
+    .option("-l, --length <number>", "length of password", "8")
+    .option("-s, --save", "save password to passwords.txt")
+    .option("-nn, --no-numbers", "remove numbers")
+    .option("-ns, --no-symbols", "remove symbols")
+    .option("-th, --thai", "support all thai")
+    .option("-th-a, --thai-alpha", "add thai alphabet")
+    .option("-th-d, --thai-digit", "add thai digit")
+    .parse();
 
-const { length, save, numbers, symbols, thai, thai_a, thai_d } = program.opts()
+const {
+    length,
+    save,
+    numbers,
+    symbols,
+    thai,
+    thaiAlpha,
+    thaiDigit,
+} = program.opts();
+console.log(program.opts());
 
 // Get generated password
-const generatedPassword = createPassword(length, numbers, symbols, thai, thai_a, thai_d)
+const generatedPassword = createPassword(
+    length,
+    numbers,
+    symbols,
+    thai,
+    thaiAlpha,
+    thaiDigit
+);
 
 // Save to file
 if (save) {
-  savePassword(generatedPassword)
+    savePassword(generatedPassword);
 }
 
 // Copy to clipboard
-clipboardy.writeSync(generatedPassword)
+clipboardy.writeSync(generatedPassword);
 
 // Output generated password
-log(chalk.blue('Generated Password: ') + chalk.bold(generatedPassword))
-log(chalk.yellow('Password copied to clipboard'))
+log(chalk.blue("Generated Password: ") + chalk.bold(generatedPassword));
+log(chalk.yellow("Password copied to clipboard"));
